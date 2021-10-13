@@ -17,7 +17,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">MY-TODO</a>
+            <a class="navbar-brand" href="/">MY-TODO-APP</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,13 +30,35 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/todo">Todo list</a>
                     </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="/uploadFIle">Upload file</a>
+                    </li> -->
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
+        <!-- Alert -->
+        @if(session('success'))
+        <div class="alert alert-success mt-3" role="alert" id="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>{{session('success')}}</strong>
+        </div>
+        @endif
+
+        @if(session('danger'))
+        <div class="alert alert-danger mt-3" role="alert" id="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <strong>{{session('danger')}}</strong>
+        </div>
+        @endif
+        <!-- End -->
+
+        <!-- Content -->
         @yield('konten')
+        <!-- End -->
+
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

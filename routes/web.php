@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TodoController::class, 'home']);
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/todo', [TodoController::class, 'todo']);
+Route::get('/todo', [TodoController::class, 'index']);
 
 Route::post('/addTodo', [TodoController::class, 'create']);
 

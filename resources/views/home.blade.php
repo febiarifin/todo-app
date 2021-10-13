@@ -8,7 +8,7 @@
         About
     </div>
     <div class="card-body">
-        <h2># My Todo-List-App</h2>
+        <h2># My Todo-App</h2>
         <div class="p-3">
             <h3 class="mb-4"># Installation</h3>
             <p class="text-justify">

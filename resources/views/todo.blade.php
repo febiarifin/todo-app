@@ -4,18 +4,6 @@
 
 @section('konten')
 
-@if(session('success'))
-<div class="alert alert-success mt-3" role="alert">
-    {{session('success')}}
-</div>
-@endif
-
-@if(session('danger'))
-<div class="alert alert-danger mt-3" role="alert">
-    {{session('danger')}}
-</div>
-@endif
-
 <div class="card mt-3 mb-3">
     <div class="card-header">
         Add todo
@@ -23,12 +11,12 @@
     <div class="card-body">
         <form action="/addTodo" method="POST">
             @csrf
-            <div class="row g-2 mb-2">
-                <div class="col-10 mt-4">
+            <div class="row mb-4">
+                <div class="col-10">
                     <label for="name">Todo Name</label>
                     <input type="text" name="name" class="form-control" required>
                 </div>
-                <div class="col-2 mt-5">
+                <div class="col-2 mt-4">
                     <input type="submit" value="Save" class="btn btn-primary">
                     <a href="/todo" class="btn btn-danger">Cancel</a>
                 </div>
