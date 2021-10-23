@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route for Home
+
 Route::get('/', [HomeController::class, 'index']);
+
+// Route for Todos
 
 Route::get('/todo', [TodoController::class, 'index']);
 
@@ -30,3 +35,15 @@ Route::get('/detailTodo/{id}', [TodoController::class, 'detailTodo']);
 Route::post('/editValueTodo', [TodoController::class, 'editValueTodo']);
 
 Route::get('/deleteTodo/{id}', [TodoController::class, 'delete']);
+
+// Route for FIles
+
+Route::get('/file', [FileController::class, 'index']);
+
+Route::post('/upload-file', [FileController::class, 'upload']);
+
+Route::get('/detailFile/{id}/{file}', [FileController::class, 'detailFile']);
+
+Route::post('/editFile', [FileController::class, 'edit']);
+
+Route::get('/deleteFile/{id}/{file}', [FileController::class, 'delete']);

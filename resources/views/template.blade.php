@@ -30,9 +30,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/todo">Todo list</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="/uploadFIle">Upload file</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/file">Upload file</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,16 +41,26 @@
     <div class="container">
         <!-- Alert -->
         @if(session('success'))
-        <div class="alert alert-success mt-3" role="alert" id="alert">
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{session('success')}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <strong>{{session('success')}}</strong>
         </div>
         @endif
 
         @if(session('danger'))
-        <div class="alert alert-danger mt-3" role="alert" id="alert">
+        <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+            {{session('danger')}}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            <strong>{{session('danger')}}</strong>
+        </div>
+        @endif
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
         @endif
         <!-- End -->
@@ -64,6 +74,19 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script>
+        function previewFile(){
+            const file = document.querySelector('#file');
+            const filePreview = document.querySelector('.file-preview');
+
+            filePreview.style.display = 'block';
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(file.files[0]);
+            oFReader.onload = function(oFREvent) {
+                filePreview.src = oFREvent.target.result;
+            }
+        }
     </script>
 </body>
 

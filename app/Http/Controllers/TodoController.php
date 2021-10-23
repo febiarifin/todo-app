@@ -29,7 +29,7 @@ class TodoController extends Controller
             return back()->with('success', 'Todo berhasil ditambahkan.');
         } catch (\Throwable $e) {
             report($e);
-            return redirect('/')->with('danger', $e->getMessage());
+            return redirect('/todo')->with('danger', $e->getMessage());
         }
     }
 
@@ -42,8 +42,7 @@ class TodoController extends Controller
             return view('editTodo', ['name' => $name], ['id' => $id]);
         } catch (\Throwable $e) {
             report($e);
-
-            return redirect('/')->with('danger', 'Todo tidak ditemukan.');
+            return redirect('/todo')->with('danger', 'Todo tidak ditemukan.');
         }
     }
 
@@ -54,7 +53,7 @@ class TodoController extends Controller
             return redirect('/todo')->with('success', 'Todo berhasil diedit.');
         } catch (\Throwable $e) {
             report($e);
-            return redirect('/')->with('danger', $e->getMessage());
+            return redirect('/todo')->with('danger', $e->getMessage());
         }
     }
 
@@ -72,7 +71,7 @@ class TodoController extends Controller
             }
         } catch (\Throwable $e) {
             report($e);
-            return redirect('/')->with('danger', $e->getMessage());
+            return redirect('/todo')->with('danger', $e->getMessage());
         }
     }
 
@@ -90,7 +89,7 @@ class TodoController extends Controller
             }
         } catch (\Throwable $e) {
             report($e);
-            return redirect('/')->with('danger', $e->getMessage());
+            return redirect('/todo')->with('danger', $e->getMessage());
         }
     }
 
@@ -101,7 +100,7 @@ class TodoController extends Controller
             return back()->with('success', 'Todo berhasil dihapus.');
         } catch (\Throwable $e) {
             report($e);
-            return redirect('/')->with('danger', $e->getMessage());
+            return redirect('/todo')->with('danger', $e->getMessage());
         }
     }
 }
