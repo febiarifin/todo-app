@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Files;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 
 class FileController extends Controller
 {
@@ -72,7 +71,7 @@ class FileController extends Controller
 
             if ($request->hasFile('file')) {
                 //Delete file from Storage/app/public/files 
-                Storage::delete($request->oldFile);
+                Storage::delete('files/' . $request->oldFile);
 
                 $nameFileExt = $request->file('file')->getClientOriginalName();
                 $nameFile = pathinfo($nameFileExt, PATHINFO_FILENAME);
@@ -97,7 +96,7 @@ class FileController extends Controller
     public function delete($id, $file)
     {
         try {
-            Storage::disk('public')->delete($file);
+            Storage::delete('files/' . $file);
             // File::delete($file);
             DB::table('files')->where('id', $id)->delete();
             return back()->with('success', 'File berhasil dihapus.');
