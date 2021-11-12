@@ -70,7 +70,6 @@ class FileController extends Controller
             ]);
 
             if ($request->hasFile('file')) {
-                //Delete file from Storage/app/public/files 
                 Storage::delete('files/' . $request->oldFile);
 
                 $nameFileExt = $request->file('file')->getClientOriginalName();
@@ -78,7 +77,6 @@ class FileController extends Controller
                 $extension = $request->file('file')->getClientOriginalExtension();
                 $fileNameSave = $nameFile . '' . uniqid() . '.' . $extension;
 
-                // Save file to Storage/app/public/files
                 $request->file('file')->storeAs('files', $fileNameSave);
             } else {
                 $fileNameSave = 'noimage.png';
@@ -97,10 +95,8 @@ class FileController extends Controller
     {
         try {
             Storage::delete('files/' . $file);
-            // File::delete($file);
             DB::table('files')->where('id', $id)->delete();
             return back()->with('success', 'File berhasil dihapus.');
-            // dd($id, $file);
         } catch (\Throwable $e) {
             report($e);
             return redirect('/file')->with('danger', $e->getMessage());

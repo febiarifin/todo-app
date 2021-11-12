@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Auth\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,13 @@ Route::get('/detailFile/{id}/{file}', [FileController::class, 'detailFile']);
 Route::post('/editFile', [FileController::class, 'edit']);
 
 Route::get('/deleteFile/{id}/{file}', [FileController::class, 'delete']);
+
+// Routes for Login
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::post('/auth', [LoginController::class, 'auth']);
+
+Route::get('/successLogin', [LoginController::class, 'successLogin'])->middleware('auth');
+
+Route::get('/logout', [LoginController::class, 'logout']);
